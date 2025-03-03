@@ -7,7 +7,10 @@ namespace BusBoardApp
     {
         public static async Task Main()
         {
-            List<ArrivingBus> nextFiveBuses = await NextFiveArrivalGetter.GetNextFiveArrivingBuses();
+            Console.WriteLine("Enter the stop code: ");
+            string userStopCode = Console.ReadLine();
+            
+            List<ArrivingBus> nextFiveBuses = await NextFiveArrivalGetter.GetNextFiveArrivingBuses(userStopCode);
             foreach (ArrivingBus bus in nextFiveBuses)
             {
                 Console.WriteLine($"Line Id: {bus.LineId}");

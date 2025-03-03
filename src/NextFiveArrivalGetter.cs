@@ -2,26 +2,17 @@ namespace BusBoardApp
 {
     class NextFiveArrivalGetter
     {
-        public static async Task GetNextFiveArrivingBuses()
+        public static async Task<List<ArrivingBus>> GetNextFiveArrivingBuses()
         {
             List<ArrivingBus> allArrivingBuses = await TflClient.GetStopPointArrivals();
             allArrivingBuses.Sort((x, y) => x.TimeToStation.CompareTo(y.TimeToStation));
-            if (allArrivingBuses.Count < 5)
+            List<ArrivingBus> nextFiveBusList = new List<ArrivingBus>{};
+
+            foreach (ArrivingBus arrivingBus in allArrivingBuses.Take(5))
             {
-                foreach (ArrivingBus arrivingBus in allArrivingBuses)
-                {
-                    Console.WriteLine($"Line Id: {arrivingBus.LineId}");
-                    Console.WriteLine($"Time to station: {arrivingBus.TimeToStation / 60} min");
-                }
+                nextFiveBusList.Add(new ArrivingBus(arrivingBus.LineId, arrivingBus.TimeToStation));
             }
-            else 
-            {
-                foreach (ArrivingBus arrivingBus in allArrivingBuses.Take(5))
-                {
-                    Console.WriteLine($"Line Id: {arrivingBus.LineId}");
-                    Console.WriteLine($"Time to station: {arrivingBus.TimeToStation / 60} min");
-                }
-            }
+            return nextFiveBusList;
         }
     }
 }

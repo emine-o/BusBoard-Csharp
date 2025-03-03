@@ -2,10 +2,9 @@ using RestSharp;
 
 namespace BusBoardApp
 {
-    class ArrivalBus
+    class ArrivingBus
     {
-        public required string lineId { get; set; }
-        public required int timeToStation { get; set; }
-
+        public required string LineId { get; set; }
+        public required int TimeToStation { get; set; }
     }
 }

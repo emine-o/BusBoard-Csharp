@@ -7,10 +7,10 @@ namespace BusBoardApp
     {
         private static readonly RestClientOptions options = new RestClientOptions("https://api.tfl.gov.uk/StopPoint");
         private static readonly RestClient arrivalBusClient = new RestClient(options);
-        public static async Task<List<ArrivalBus>> GetStopPointArrivals()
+        public static async Task<List<ArrivingBus>> GetStopPointArrivals()
         {
             var request = new RestRequest("/490008660N/Arrivals");
-            var response = await arrivalBusClient.GetAsync<List<ArrivalBus>>(request);
+            var response = await arrivalBusClient.GetAsync<List<ArrivingBus>>(request);
             if (response == null) {
                 throw new Exception("Tfl API error");
             }

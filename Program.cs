@@ -4,11 +4,13 @@ namespace BusBoardApp
 {
     class Program
     {
-        public static async Task Main() {
-            List<ArrivalBus> allArrivalBuses = await TflClient.GetStopPointArrivals();
-            foreach (ArrivalBus arrivalBus in allArrivalBuses) {
-                Console.WriteLine($"Line Id: {arrivalBus.lineId}");
-                Console.WriteLine($"Time to station: {arrivalBus.timeToStation}");
+        public static async Task Main()
+        {
+            List<ArrivingBus> allArrivingBuses = await TflClient.GetStopPointArrivals();
+            allArrivingBuses.Sort((x, y) => x.TimeToStation.CompareTo(y.TimeToStation));
+            foreach (ArrivingBus arrivingBus in allArrivingBuses.Take(5)) {
+                Console.WriteLine($"Line Id: {arrivingBus.LineId}");
+                Console.WriteLine($"Time to station: {arrivingBus.TimeToStation}");
             }
         }
     }

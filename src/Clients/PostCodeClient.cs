@@ -4,16 +4,16 @@ namespace BusBoardApp
 {
     class PostCodeClient
     {
-        private static readonly RestClientOptions options = new RestClientOptions("https://api.postcodes.io/postcodes");
+        private static readonly RestClientOptions options = new RestClientOptions("https://api.postcodes.io");
         private static readonly RestClient postCodeClient = new RestClient(options);
-        public static async Task GetPostCodeInformation()
+        public static async Task<PostCodeResult> GetPostCodeInformation()
         {
-            var request = new RestRequest("NW51TL");
-            var response = await postCodeClient.GetAsync(request);
+            var request = new RestRequest("postcodes/NW51TL");
+            var response = await postCodeClient.GetAsync<PostCodeResult>(request);
             if (response == null) {
                 throw new Exception("Tfl API error");
             }
-            Console.WriteLine(response.Content);
+            return response;
         }
     }
 }

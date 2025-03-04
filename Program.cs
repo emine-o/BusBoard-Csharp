@@ -16,8 +16,8 @@ namespace BusBoardApp
             //     Console.WriteLine($"Line Id: {bus.LineId}");
             //     Console.WriteLine($"Time to station: {bus.TimeToStation / 60} min");
             // }
-            await PostCodeClient.GetPostCodeInformation();
-            
+            PostCodeResult response = await PostCodeClient.GetPostCodeInformation();
+            Console.WriteLine($"Longitude: {response.Result.Longitude}, Latitude: {response.Result.Latitude}");
         }
     }
 }

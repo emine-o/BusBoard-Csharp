@@ -16,8 +16,14 @@ namespace BusBoardApp
             //     Console.WriteLine($"Line Id: {bus.LineId}");
             //     Console.WriteLine($"Time to station: {bus.TimeToStation / 60} min");
             // }
-            PostCodeResult response = await PostCodeClient.GetPostCodeInformation();
-            Console.WriteLine($"Longitude: {response.Result.Longitude}, Latitude: {response.Result.Latitude}");
+
+            LonLatResult lonLatResult = await TflClient.GetNearestStopPoints(51.553935, -0.144754);
+            List<NearestStopPoints> stopPointList = lonLatResult.StopPoint;
+
+            foreach (NearestStopPoints item in stopPointList)
+            {
+                Console.WriteLine($"Stop id: {item.NaptanId}, Stop name: {item.CommonName}");
+            }
         }
     }
 }

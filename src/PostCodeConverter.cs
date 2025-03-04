@@ -1,7 +1,0 @@
-namespace BusBoardApp
-{
-    class PostCodeConverter
-    {
-        
-    }
-}

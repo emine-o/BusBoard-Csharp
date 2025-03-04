@@ -4,10 +4,10 @@ namespace BusBoardApp
     {
         public double Longitude { get; set; }
         public double Latitude { get; set; }
-        public PostCodeInfo(double longitude, double latitude)
+        public PostCodeInfo(double latitude, double longitude)
         {
-            Longitude = longitude;
             Latitude = latitude;
+            Longitude = longitude;
         }
     }
 

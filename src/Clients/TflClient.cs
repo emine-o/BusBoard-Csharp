@@ -18,7 +18,7 @@ namespace BusBoardApp
             return response;
         }
 
-        public static async Task<LonLatResult> GetNearestStopPoints(double lat, double lon)
+        public static async Task<LonLatResult> GetNearestStopPointsResult(double lat, double lon)
         {
             var request = new RestRequest($"/?lat={lat}&lon={lon}&stopTypes=NaptanPublicBusCoachTram");
             var response = await stopPointClient.GetAsync<LonLatResult>(request);

@@ -18,7 +18,7 @@ namespace BusBoardApp
             // }
 
             LonLatResult lonLatResult = await TflClient.GetNearestStopPoints(51.553935, -0.144754);
-            List<NearestStopPoints> stopPointList = lonLatResult.StopPoint;
+            List<NearestStopPoints> stopPointList = lonLatResult.StopPoints;
 
             foreach (NearestStopPoints item in stopPointList)
             {

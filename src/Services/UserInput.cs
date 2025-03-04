@@ -5,7 +5,7 @@ namespace BusBoardApp
         public static string GetUsersPostCodeInput()
         {
             Console.WriteLine("Enter postcode:");
-            string userInput = Console.ReadLine();
+            string userInput = Console.ReadLine().Replace(" ", "");
             return userInput;
         }
     }

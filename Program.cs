@@ -8,11 +8,7 @@ namespace BusBoardApp
         public static async Task Main()
         {
             string userPostCode = UserInput.GetUsersPostCodeInput();
-            List<NearestStopPoints> nearestStopPoints = await NearestStopPointsGetter.GetNearestStopPoints(userPostCode);
-            foreach (NearestStopPoints stopPoint in nearestStopPoints)
-            {
-                Console.WriteLine($"Stop name: {stopPoint.CommonName}, Stop id: {stopPoint.NaptanId}");
-            }
+            await Printer.PrintNextFiveBusesForNearestStops(userPostCode);
         }
     }
 }
